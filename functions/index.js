@@ -1,25 +1,21 @@
-const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
 const stripe = require("stripe")(
-    "sk_test_51NGpO9SDZrS775GMdVB4G2QhLrT4iBuDH9qpNeHh7Ms57lzD" +
-    "euneK7d5jT409iPcLo9IFs1aNFXKWVWPTDVYuhd300jnqIfIka",
+  "sk_test_51NGpO9SDZrS775GMdVB4G2QhLrT4iBuDH9qpNeHh7Ms57lzD" +
+  "euneK7d5jT409iPcLo9IFs1aNFXKWVWPTDVYuhd300jnqIfIka",
 );
 
-// API
-
-// - App config
 const app = express();
 
-// - Middlewares
-app.use(cors({origin: true}));
+// Middlewares
+app.use(cors({ origin: true }));
 app.use(express.json());
 
-// - API routes
-app.get("/", (request, response) => response.status(200).send("hello world"));
+// API routes
+app.get("/", (req, res) => res.status(200).send("hello world"));
 
-app.post("/payments/create", async (request, response) => {
-  const total = request.query.total;
+app.post("/payments/create", async (req, res) => {
+  const total = req.query.total;
 
   console.log("Payment Request Received BOOM!!! for this amount >>> ", total);
 
@@ -31,10 +27,10 @@ app.post("/payments/create", async (request, response) => {
   });
 
   // OK - Created
-  response.status(201).send({
+  res.status(201).send({
     clientSecret: paymentIntent.client_secret,
   });
 });
 
-// - Listen command
-exports.api = functions.https.onRequest(app);
+// Export the Express app as a Netlify serverless function
+module.exports = app;

@@ -23,18 +23,16 @@ function Payment() {
     const [clientSecret, setClientSecret] = useState("");
 
     useEffect(() => {
-        // generate the special stripe secret which allows us to charge a customer
+        // Create PaymentIntent as soon as the page loads
         const getClientSecret = async () => {
-            const response = await axios({
-                method: 'post',
-                // Stripe expects the total in a currencies subunits
-                url: `/payments/create?total=${getBasketTotal(basket) * 100}`
+            const response = await axios.post('/.netlify/functions/api/payments/create', {
+                total: getBasketTotal(basket) * 100
             });
-            setClientSecret(response.data.clientSecret)
-        }
+            setClientSecret(response.data.clientSecret);
+        };
 
         getClientSecret();
-    }, [basket])
+    }, [basket]);
 
     // console.log('THE SECRET IS >>>', clientSecret)
     // console.log('👱', user?.uid)

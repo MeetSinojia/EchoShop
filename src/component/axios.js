@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
     // THE API (cloud function) URL
-    baseURL: 'http://127.0.0.1:5001/clone-ee4a4/us-central1/api'
+    baseURL: '/.netlify/functions/api' // Update the baseURL to the Netlify Functions API endpoint
 });
 
 export default instance;
