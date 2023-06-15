@@ -4,7 +4,6 @@ const stripe = require("stripe")(
   "sk_test_51NGpO9SDZrS775GMdVB4G2QhLrT4iBuDH9qpNeHh7Ms57lzD" +
   "euneK7d5jT409iPcLo9IFs1aNFXKWVWPTDVYuhd300jnqIfIka",
 );
-
 const app = express();
 
 // Middlewares
