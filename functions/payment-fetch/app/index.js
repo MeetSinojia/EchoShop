@@ -1,6 +1,11 @@
 /* Express App */
 const process = require('process')
-
+const express = require("express");
+const cors = require("cors");
+const stripe = require("stripe")(
+  "sk_test_51NGpO9SDZrS775GMdVB4G2QhLrT4iBuDH9qpNeHh7Ms57lzD" +
+  "euneK7d5jT409iPcLo9IFs1aNFXKWVWPTDVYuhd300jnqIfIka",
+);
 const compression = require('compression')
 const cors = require('cors')
 const express = require('express')
@@ -10,6 +15,8 @@ const morgan = require('morgan')
 module.exports = function expressApp(functionName) {
   const app = express()
   const router = express.Router()
+  app.use(cors({ origin: true }));
+  app.use(express.json());
 
   // gzip responses
   router.use(compression())
@@ -17,71 +24,27 @@ module.exports = function expressApp(functionName) {
   // Set router base path for local dev
   const routerBasePath = process.env.NODE_ENV === 'dev' ? `/${functionName}` : `/.netlify/functions/${functionName}/`
 
-  /* define routes */
-  router.get('/', function onRequest(req, res) {
-    const html = `
-    <html>
-      <head>
-        <style>
-          body {
-            padding: 30px;
-          }
-        </style>
-      </head>
-      <body>
-        <h1>Express via '${functionName}' ⊂◉‿◉つ</h1>
+  // API routes
+  app.get("/", (req, res) => res.status(200).send("hello world"));
 
-        <p>I'm using Express running via a <a href='https://docs.netlify.com/functions/overview/' target='_blank'>Netlify Function</a>.</p>
+  app.post("/payments/create", async (req, res) => {
+    const total = req.query.total;
 
-        <p>Choose a route:</p>
+    console.log("Payment Request Received BOOM!!! for this amount >>> ", total);
 
-        <div>
-          <a href='/.netlify/functions/${functionName}/users'>View /users route</a>
-        </div>
+    // Create a payment intent
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: total, // subunits of the currency
+      currency: "inr",
+      description: "Software development services",
+    });
 
-        <div>
-          <a href='/.netlify/functions/${functionName}/hello'>View /hello route</a>
-        </div>
+    // OK - Created
+    res.status(201).send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  });
 
-        <br/>
-        <br/>
-
-        <div>
-          <a href='/'>
-            Go back to demo homepage
-          </a>
-        </div>
-
-        <br/>
-        <br/>
-
-        <div>
-          <a href='https://github.com/DavidWells/netlify-functions-express' target='_blank'>
-            See the source code on GitHub
-          </a>
-        </div>
-      </body>
-    </html>
-  `
-    res.send(html)
-  })
-
-  router.get('/users', function onRequest(req, res) {
-    res.json({
-      users: [
-        {
-          name: 'steve',
-        },
-        {
-          name: 'joe',
-        },
-      ],
-    })
-  })
-
-  router.get('/hello/', function onRequest(req, res) {
-    res.send('hello world')
-  })
 
   // Attach logger
   app.use(morgan(customLogger))
