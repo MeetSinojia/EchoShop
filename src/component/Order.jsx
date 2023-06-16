@@ -27,7 +27,7 @@ function Order({ order }) {
                 ))
             }
             <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'blue' }}>
-                Order Total: ₹{(order.data.amount).toFixed(2)}
+                Order Total: ₹{(order.data.amount / 100).toFixed(2)}
             </div>
 
         </div >
