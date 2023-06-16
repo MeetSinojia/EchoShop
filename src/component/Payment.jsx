@@ -136,16 +136,10 @@ function Payment() {
                             <CardElement onChange={handleChange} />
 
                             <div className='payment__priceContainer'>
-                                {/* <CurrencyFormat
-                                    renderText={(value) => (
-                                        <h3>Order Total: {value}</h3>
-                                    )}
-                                    decimalScale={2}
-                                    value={getBasketTotal(basket)}
-                                    displayType={"text"}
-                                    thousandSeparator={true}
-                                    prefix={"₹"}
-                                /> */}
+                                <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'green' }}>
+                                    Order Total: ₹{getBasketTotal(basket).toFixed(2)}
+                                </h3>
+
                                 <button disabled={processing || disabled || succeeded}>
                                     <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                                 </button>

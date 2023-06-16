@@ -13,23 +13,15 @@ export default function Subtotal() {
     return (
         <div className='subtotal'>
 
-            {/* <CurrencyFormat
-                renderText={(value) => (
-                    <>
-                        <p>
-                            Subtotal ({basket?.length} items): <strong>{val}</strong>
-                        </p>
-                        <small className="subtotal__gift">
-                            <input type="checkbox" /> This order contains a gift
-                        </small>
-                    </>
-                )}
-                decimalScale={2}
-                value={val} // Part of the homework
-                displayType={"text"}
-                thousandSeparator={true}
-                prefix={"₹"}
-            /> */}
+            <div>
+                <p>
+                    Subtotal ({basket?.length} items): <strong>{val}</strong>
+                </p>
+                <small className="subtotal__gift">
+                    <input type="checkbox" /> This order contains a gift
+                </small>
+            </div>
+
             <button onClick={e => history('/payment')}>Procedd to checkout</button >
         </div>
     )
