@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
     // THE API (cloud function) URL
-    baseURL: 'http://127.0.0.1:5001/clone-ee4a4/us-central1/api'
+    baseURL: 'https://amzon-clone-backend.onrender.com'
 });
 
 export default instance;
