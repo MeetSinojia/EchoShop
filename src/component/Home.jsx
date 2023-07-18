@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import { colors } from "@mui/material";
-import banner from '../assets/home-banner.jpg'
+import banner from '../assets/imgonline-com-ua-resize-d8RjqcwYVs.jpg'
 import Product from "./Product";
 import product_1 from '../assets/product-1.jpg'
 import product_2 from '../assets/product-2.jpg'
@@ -15,11 +15,12 @@ function Home() {
   return (
     <div className="home">
       <div className="home__container">
-        <img
+        <img id="overlay"
           className="home__image"
           src={banner}
           alt=""
         />
+
 
         <div className="home-row">
           <Product

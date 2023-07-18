@@ -25,12 +25,17 @@
     margin-top: 5px;
 }
 
-.product>button {
+.add-to-basket-button {
     background: #f0c14b;
     border: 1px solid;
     margin-top: 10px;
     border-color: #a88734 #9c7e31 #846a29;
     color: #111;
+    transition: background-color 0.3s;
+}
+
+.add-to-basket-button:hover {
+    background-color: #e3a845;
 }
 
 .product>img {

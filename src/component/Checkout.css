@@ -1,18 +1,42 @@
 .checkout {
     display: flex;
+    flex-wrap: wrap;
+    /* Allow content to wrap */
     padding: 20px;
-    background-color: white;
-    height: max-content;
+    background-color: #f2f2f2;
+    /* Set the background color */
+}
+
+.checkout-left {
+    flex: 0.7;
+    /* Adjust the width of the left section */
+    margin-right: 20px;
+}
+
+.checkout-right {
+    flex: 0.3;
+    /* Adjust the width of the right section */
 }
 
 .checkout-ad {
     width: 100%;
-    max-height: 150px;
-    margin-bottom: 10px;
+    max-height: 200px;
+    /* Adjust the height as needed */
+    object-fit: contain;
+    /* Preserve the image aspect ratio */
+    margin-bottom: 20px;
+    /* Increase the margin */
 }
 
 .checkout-title {
-    margin-right: 10px;
-    padding: 10px;
-    border-bottom: 1px solid lightgray;
+    margin-bottom: 20px;
+    /* Increase the margin */
+    padding-bottom: 10px;
+    /* Remove the top padding */
+    border-bottom: 2px solid #333333;
+    /* Change the border color and thickness */
+    color: #333333;
+    /* Change the text color */
+    font-size: 24px;
+    /* Increase the font size */
 }

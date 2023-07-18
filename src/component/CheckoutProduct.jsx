@@ -27,7 +27,7 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
                     {"🌟".repeat(rating)}
                 </div>
                 {!hideButton && (
-                    <button onClick={removeFromBasket}>Remove from Basket</button>
+                    <button className="remove-basket" onClick={removeFromBasket}>Remove from Basket</button>
                 )}
             </div>
         </div>
