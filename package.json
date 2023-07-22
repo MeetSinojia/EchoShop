@@ -20,10 +20,15 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "firebase": "^9.22.1",
+    "geolocation-utils": "^1.2.5",
+    "ip-geolocation-api-javascript-sdk": "^1.0.9",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
+    "react-simple-image-slider": "^2.4.1",
+    "react-slick": "^0.29.0",
+    "slick-carousel": "^1.8.1",
     "stripe": "^12.9.0"
   },
   "devDependencies": {
