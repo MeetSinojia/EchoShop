@@ -91,12 +91,6 @@ function Product({ id, title, price, image, rating, sellerLocation }) {
                 Add to Basket
             </button>
             <button onClick={() => checkDeliveryTime(sellerLocation, buyerLocation)}>Check Delivery Time</button>
-            {location && (
-                <div>
-                    <h2>Your Location:</h2>
-                    <p>City: {location.city}</p>
-                </div>
-            )}
         </div>
     );
 }
