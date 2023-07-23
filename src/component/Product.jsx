@@ -41,6 +41,7 @@ function Product({ id, title, price, image, rating, sellerLocation }) {
             setDeliveryTime(estimatedDeliveryTime);
             console.log(estimatedDeliveryTime);
         } catch (error) {
+            setDeliveryTime("Sorry Delivery Not Possible");
             // Handle error if necessary
             console.error(error);
         }

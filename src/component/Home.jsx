@@ -88,7 +88,7 @@ function Home() {
             price={5000}
             image={product_6}
             rating={3}
-            sellerLocation="Pune"
+            sellerLocation="Kashmir"
           />
         </div>
       </div>
